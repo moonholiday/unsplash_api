@@ -1,8 +1,8 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
+import { ImagesInterface } from "../../schema";
 
 const View: React.FC = () => {
-  const images = 0;
   return (
     <SimpleGrid minChildWidth="300px" spacing="40px">
       <Box
