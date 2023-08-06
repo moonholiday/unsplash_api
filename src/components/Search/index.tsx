@@ -1,4 +1,4 @@
-import { Box, Input, InputGroup, SimpleGrid } from "@chakra-ui/react";
+import { Input, InputGroup } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
 import { DebounceInput } from "react-debounce-input";
 interface Props {
