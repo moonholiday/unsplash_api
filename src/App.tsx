@@ -1,4 +1,4 @@
-import { Root } from "./pages";
+import Root from "./pages";
 
 function App() {
   return <Root />;

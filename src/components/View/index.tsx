@@ -7,19 +7,15 @@ interface Props {
 }
 
 const View: React.FC<Props> = (props) => {
-  const { images } = props;
   return (
     <SimpleGrid minChildWidth="300px" spacing="40px">
-      {images?.map((image) => (
-        <Box
-          key={image.id}
-          w="100%"
-          h="300px"
-          bgImg={`url(${image.urls.regular})`}
-          backgroundPosition="center"
-          backgroundSize="cover"
-        ></Box>
-      ))}
+      <Box
+        w="100%"
+        h="300px"
+        bg="gray"
+        backgroundPosition="center"
+        backgroundSize="cover"
+      ></Box>
     </SimpleGrid>
   );
 };
