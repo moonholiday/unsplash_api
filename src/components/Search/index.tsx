@@ -1,42 +1,27 @@
 import { Box, Input, InputGroup, SimpleGrid } from "@chakra-ui/react";
-import { useState } from "react";
-import { getImages } from "../../api";
+import { Dispatch, SetStateAction } from "react";
 import { DebounceInput } from "react-debounce-input";
+interface Props {
+  query: string;
+  setQuery: Dispatch<SetStateAction<string>>;
+}
 
-const Search: React.FC = () => {
-  // State to hold the query data
-  const [query, setQuery] = useState<string>("");
-  console.log(query);
-
-  const response = getImages(query);
-  console.log(response);
+const Search: React.FC<Props> = (props) => {
+  const { query, setQuery } = props;
 
   return (
-    <>
-      <InputGroup>
-        <DebounceInput
-          element={Input}
-          minLength={2}
-          debounceTimeout={1000}
-          type="text"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          variant="flushed"
-          placeholder="Search"
-        />
-      </InputGroup>
-      <SimpleGrid minChildWidth="300px" spacing="40px">
-        {/* {response.map((image) => ( */}
-        <Box
-          w="100%"
-          h="300px"
-          bg="gray"
-          backgroundPosition="center"
-          backgroundSize="cover"
-        ></Box>
-        {/* ))} */}
-      </SimpleGrid>
-    </>
+    <InputGroup>
+      <DebounceInput
+        element={Input}
+        minLength={2}
+        debounceTimeout={1000}
+        type="text"
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        variant="flushed"
+        placeholder="Search"
+      />
+    </InputGroup>
   );
 };
 
