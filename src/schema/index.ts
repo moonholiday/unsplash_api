@@ -4,3 +4,9 @@ export interface ImagesInterface {
     regular: string;
   };
 }
+
+export interface ImagesListInterface {
+  total: number;
+  total_pages: number;
+  results: ImagesInterface[];
+}

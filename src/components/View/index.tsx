@@ -17,7 +17,8 @@ const View: React.FC<Props> = (props) => {
       </Grid>
     );
   }
-  if (!images.length) {
+
+  if (!images?.length) {
     return <div>Search a query!!</div>;
   }
   return (
