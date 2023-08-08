@@ -13,7 +13,7 @@ const View: React.FC<Props> = (props) => {
   if (isLoading) {
     return (
       <Grid placeItems="center" width="container.xl" height="80vh" p={4}>
-        <Spinner size="lg" />
+        <Spinner color="black" size="3xl" />
       </Grid>
     );
   }
@@ -21,6 +21,7 @@ const View: React.FC<Props> = (props) => {
   if (!images?.length) {
     return <div>Search for anything</div>;
   }
+
   return (
     <SimpleGrid minChildWidth="300px" spacing="40px">
       {images?.map((item) => (
