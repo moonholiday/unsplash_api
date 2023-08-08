@@ -8,29 +8,32 @@ import {
   PaginationContainer,
   PaginationPageGroup,
 } from "@ajna/pagination";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface Props {
   pageCount: number;
   setPage: Dispatch<SetStateAction<number>>;
+  page: number;
 }
 
 const ChakraPagination: React.FC<Props> = (props) => {
-  const { pageCount, setPage } = props;
+  const { pageCount, setPage, page } = props;
 
   const { currentPage, setCurrentPage, pagesCount, pages } = usePagination({
     pagesCount: pageCount,
-    initialState: { currentPage: 1, pageSize: 15 },
+    initialState: { currentPage: page, pageSize: 15 },
     limits: {
-      outer: 3,
-      inner: 3,
+      outer: 2,
+      inner: 2,
     },
   });
-  console.log("currentPage", currentPage);
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     setPage(page);
   };
+  useEffect(() => {
+    setCurrentPage(page);
+  }, [page]);
 
   return (
     <ChakraProvider>

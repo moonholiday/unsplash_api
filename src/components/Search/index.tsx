@@ -4,10 +4,16 @@ import { DebounceInput } from "react-debounce-input";
 interface Props {
   query: string;
   setQuery: Dispatch<SetStateAction<string>>;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
 }
 
 const Search: React.FC<Props> = (props) => {
-  const { query, setQuery } = props;
+  const { query, setQuery, setCurrentPage } = props;
+
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+    setCurrentPage(1);
+  };
 
   return (
     <InputGroup>
@@ -17,7 +23,7 @@ const Search: React.FC<Props> = (props) => {
         debounceTimeout={1000}
         type="text"
         value={query}
-        onChange={(event) => setQuery(event.target.value)}
+        onChange={handleQueryChange}
         variant="flushed"
         placeholder="Search"
       />

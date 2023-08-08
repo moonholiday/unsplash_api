@@ -21,19 +21,20 @@ const App: React.FC = () => {
       }
       return getImages(data);
     },
-    enabled: !!query,
   });
 
   return (
     <Container p="4rem" maxW="container.xl">
       <Flex direction="column" gap="2rem">
-        <Search query={query} setQuery={setQuery} />
+        <Search query={query} setQuery={setQuery} setCurrentPage={setPage} />
         {images?.results?.length && (
           <View images={images?.results} isLoading={isLoading} />
         )}
-        {images?.total && (
-          <ChakraPagination pageCount={images?.total_pages} setPage={setPage} />
-        )}
+        <ChakraPagination
+          page={page}
+          pageCount={images?.total_pages!}
+          setPage={setPage}
+        />
       </Flex>
     </Container>
   );
