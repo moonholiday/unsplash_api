@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const client_id = "G7alFg4s_Rx4pY1FFPsje98B40ZYtA0zYQ79zmbQlO8";
-// const client_id = "os6OI_mnQuUVi9v1mLdtPHZw0AZERetWpG3p2IT8ZWs";
+const client_id = import.meta.env.VITE_ACCESS_KEY;
 axios.defaults.baseURL = "https://api.unsplash.com";
 
 export async function getImages(query: any) {

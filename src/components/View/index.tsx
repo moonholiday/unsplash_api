@@ -19,7 +19,7 @@ const View: React.FC<Props> = (props) => {
   }
 
   if (!images?.length) {
-    return <div>Search a query!!</div>;
+    return <div>Search for anything</div>;
   }
   return (
     <SimpleGrid minChildWidth="300px" spacing="40px">

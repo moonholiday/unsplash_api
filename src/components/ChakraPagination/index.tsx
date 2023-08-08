@@ -1,4 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Stack } from "@chakra-ui/react";
 import {
   Pagination,
   usePagination,
@@ -22,8 +22,8 @@ const ChakraPagination: React.FC<Props> = (props) => {
     pagesCount: pageCount,
     initialState: { currentPage: 1, pageSize: 15 },
     limits: {
-      outer: 2,
-      inner: 2,
+      outer: 3,
+      inner: 3,
     },
   });
   console.log("currentPage", currentPage);
@@ -34,21 +34,42 @@ const ChakraPagination: React.FC<Props> = (props) => {
 
   return (
     <ChakraProvider>
-      <Pagination
-        pagesCount={pagesCount}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      >
-        <PaginationContainer>
-          <PaginationPrevious>Previous</PaginationPrevious>
-          <PaginationPageGroup>
-            {pages.map((page: number) => (
-              <PaginationPage key={`pagination_page_${page}`} page={page} />
-            ))}
-          </PaginationPageGroup>
-          <PaginationNext>Next</PaginationNext>
-        </PaginationContainer>
-      </Pagination>
+      <Stack>
+        <Pagination
+          pagesCount={pagesCount}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        >
+          <PaginationContainer
+            align="center"
+            justify="space-between"
+            p={4}
+            w="full"
+          >
+            <PaginationPrevious>Previous</PaginationPrevious>
+            <PaginationPageGroup>
+              {pages.map((page: number) => (
+                <PaginationPage
+                  w={10}
+                  m={2}
+                  bg="gray.200"
+                  key={`pagination_page_${page}`}
+                  page={page}
+                  fontSize="lg"
+                  _hover={{
+                    bg: "gray.400",
+                  }}
+                  _current={{
+                    bg: "gray.600",
+                    fontSize: "lg",
+                  }}
+                />
+              ))}
+            </PaginationPageGroup>
+            <PaginationNext>Next</PaginationNext>
+          </PaginationContainer>
+        </Pagination>
+      </Stack>
     </ChakraProvider>
   );
 };

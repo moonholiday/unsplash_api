@@ -24,10 +24,6 @@ const App: React.FC = () => {
     enabled: !!query,
   });
 
-  // if (!images?.results) {
-  //   return <div>no results</div>;
-  // }
-
   return (
     <Container p="4rem" maxW="container.xl">
       <Flex direction="column" gap="2rem">
